@@ -1,0 +1,55 @@
+{
+  "total_count": 1582,
+  "incomplete_results": false,
+  "items": [
+    {
+      "url": "https://api.github.com/repos/operator-framework/awesome-operators/issues/124",
+      "repository_url": "https://api.github.com/repos/operator-framework/awesome-operators",
+      "labels_url": "https://api.github.com/repos/operator-framework/awesome-operators/issues/124/labels{/name}",
+      "comments_url": "https://api.github.com/repos/operator-framework/awesome-operators/issues/124/comments",
+      "events_url": "https://api.github.com/repos/operator-framework/awesome-operators/issues/124/events",
+      "html_url": "https://github.com/operator-framework/awesome-operators/issues/124",
+      "id": 609717368,
+      "node_id": "MDU6SXNzdWU2MDk3MTczNjg=",
+      "number": 124,
+      "title": "KubeDB only listed once",
+      "user": {
+        "login": "hermanbanken",
+        "id": 791189,
+        "node_id": "MDQ6VXNlcjc5MTE4OQ==",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/791189?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/hermanbanken",
+        "html_url": "https://github.com/hermanbanken",
+        "followers_url": "https://api.github.com/users/hermanbanken/followers",
+        "following_url": "https://api.github.com/users/hermanbanken/following{/other_user}",
+        "gists_url": "https://api.github.com/users/hermanbanken/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/hermanbanken/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/hermanbanken/subscriptions",
+        "organizations_url": "https://api.github.com/users/hermanbanken/orgs",
+        "repos_url": "https://api.github.com/users/hermanbanken/repos",
+        "events_url": "https://api.github.com/users/hermanbanken/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/hermanbanken/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "labels": [
+
+      ],
+      "state": "open",
+      "locked": false,
+      "assignee": null,
+      "assignees": [
+
+      ],
+      "milestone": null,
+      "comments": 0,
+      "created_at": "2020-04-30T08:39:18Z",
+      "updated_at": "2020-04-30T08:39:18Z",
+      "closed_at": null,
+      "author_association": "NONE",
+      "body": "When selecting a good Redis Cluster operator I found KubeDB elsewhere, but in this table it is not clear that it provides operators for:\r\n- elasticsearch,\r\n- memcached,\r\n- mongodb,\r\n- mysql,\r\n- postgresql,\r\n- redis\r\n\r\nMultiple paths to go:\r\n- add tags and host this page as something interactive with some tag-filtering on Github Pages?\r\n- add these db's to comment column\r\n- add kubedb also at \"#3 Redis Cluster\" etc",
+      "score": 1.0
+    },
+  ]
+}
