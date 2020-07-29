@@ -56,11 +56,8 @@ func dirents(dir string) []os.FileInfo { // return list of dir entries
 }
 
 /*
-$time go run ch8/du/main.go c:/Users/vb
-du: open c:\Users\vb\AppData\Local\ElevatedDiagnostics: Access is denied.
-du: open c:\Users\vb\AppData\Local\Temp\CR_B4861.tmp: Access is denied.
-du: open c:\Users\vb\AppData\Local\Temp\msdtadmin: Access is denied.
-63729 files  78002.27 MB
+$time go run du1/main.go c:/Users/ 2>/dev/null
+64251 files  78206.76 MB
 
-real    0m2.655s
+real    0m2.689s
 */
