@@ -34,7 +34,7 @@ func main() {
 	}()
 
 	if *verbose { // if verbose flag set to true set tick channel to 500 ms (print delay)
-		tick = time.Tick(500 * time.Millisecond)
+		tick = time.Tick(500 * time.Millisecond) // send the time to the chan with a period specified
 	}
 
 loop: // label. optional for 'break' and 'continue', mandatory for 'goto' statements
