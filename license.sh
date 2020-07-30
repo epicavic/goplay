@@ -8,12 +8,12 @@ dir=${1:-.}
 tmp=$(mktemp)
 
 for file in $(find ${dir} -type f -not -path '*/\.*' -not -iname readme.md); do
-  if ! grep -q 'Derivative of "The Go Programming Language"' ${file}; then
+  if ! grep -q 'Derivative of "The Go Programming Language"' "${file}"; then
     {
-    echo "$header"
-    cat $file
-    } > $tmp
-    mv $tmp $file
+    echo "${header}"
+    cat "${file}"
+    } > "${tmp}"
+    mv "${tmp}" "${file}"
   fi
 done
-rm -f $tmp
+rm -f "${tmp}"
