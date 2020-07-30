@@ -7,7 +7,7 @@ header='// Derivative of "The Go Programming Language" © 2016 examples by
 dir=${1:-.}
 tmp=$(mktemp)
 
-for file in $(find ${dir} -type f -not -path '*/\.*' -not -iname readme.md); do
+for file in $(find "${dir}" -type f -not -path '*/\.*' -not -iname readme.md); do
   if ! grep -q 'Derivative of "The Go Programming Language"' "${file}"; then
     {
     echo "${header}"
