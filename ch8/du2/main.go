@@ -1,3 +1,7 @@
+// Derivative of "The Go Programming Language" © 2016 examples by
+// Alan A. A. Donovan & Brian W. Kernighan.
+// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
 package main
 
 import (
@@ -9,6 +13,8 @@ import (
 	"sync"
 	"time"
 )
+
+var cancel = make(chan struct{}) // cancellation channel. closing this chan indicates that program has to be stopped
 
 func main() {
 	var verbose = flag.Bool("v", false, "print progress") // -v flag enables progress print
@@ -22,6 +28,12 @@ func main() {
 	if len(roots) == 0 {
 		roots = []string{"."} // or use current
 	}
+
+	go func() { // cancel program execution when input detected
+		os.Stdin.Read(make([]byte, 1)) // read a single byte (any keypress)
+		fmt.Println("Keypress detected. Canceling...")
+		close(cancel)
+	}()
 
 	for _, root := range roots { // traverse dirs recursively
 		n.Add(1)                        // initial increment for number of calls to walkDir
@@ -40,6 +52,10 @@ func main() {
 loop: // label. optional for 'break' and 'continue', mandatory for 'goto' statements
 	for {
 		select { // select action depending which channel receives event
+		case <-cancel:
+			for range fileSizes { // drain fileSizes to allow existing goroutines to finish.
+			} // noop
+			return
 		case size, ok := <-fileSizes:
 			if !ok {
 				break loop // break for loop when fileSizes was closed
@@ -53,12 +69,24 @@ loop: // label. optional for 'break' and 'continue', mandatory for 'goto' statem
 	printDiskUsage(nfiles, nbytes) // print final totals
 }
 
+func cancelled() bool { // cancellation state poller
+	select {
+	case <-cancel: // closed channel yielding zero values for all subsequent receive operations
+		return true
+	default:
+		return false
+	}
+}
+
 func printDiskUsage(nfiles, nbytes int64) {
 	fmt.Printf("%d files  %.2f MB\n", nfiles, float64(nbytes)/1e6)
 }
 
 func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
-	defer n.Done() // decrement counter in the end in any case
+	defer n.Done()   // decrement counter in the end in any case
+	if cancelled() { // noop if cancel channel is closed
+		return
+	}
 	for _, entry := range dirents(dir) {
 		if entry.IsDir() {
 			n.Add(1) // increment counter
