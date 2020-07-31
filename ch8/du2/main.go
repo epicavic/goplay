@@ -67,6 +67,7 @@ loop: // label. optional for 'break' and 'continue', mandatory for 'goto' statem
 		}
 	}
 	printDiskUsage(nfiles, nbytes) // print final totals
+	// panic("panic") // get stacktrace to check number of goroutines at the end of execution
 }
 
 func cancelled() bool { // cancellation state poller
